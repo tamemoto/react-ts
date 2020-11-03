@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-use-before-define
-import React, { FC } from 'react';
+import React, { Component, ReactElement } from 'react';
 import CharacterList, { Character } from './CharacterList';
 import './App.css';
 
-const App: FC = () => {
-  const characters: Character[] = [
+class App extends Component {
+  characters: Character[] = [
     {
       id: 1,
       name: '桜木花道',
@@ -36,14 +36,16 @@ const App: FC = () => {
     },
   ];
 
-  return (
-    <div className="container">
-      <header>
-        <h1>『SLAM DUNK』登場人物</h1>
-        <CharacterList school="湘北高校" characters={characters} />
-      </header>
-    </div>
-  );
-};
+  render(): ReactElement {
+    return (
+      <div className="container">
+        <header>
+          <h1>『SLAM DUNK』登場人物</h1>
+          <CharacterList school="湘北高校" characters={this.characters} />
+        </header>
+      </div>
+    );
+  }
+}
 
 export default App;
