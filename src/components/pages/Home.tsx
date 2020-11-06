@@ -1,21 +1,10 @@
 // eslint-disable-next-line no-use-before-define
 import React, { FC } from 'react';
 import { Helmet } from 'react-helmet';
-import { Container, List } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { charactersData } from '../../data/characters';
-
-type School = {
-  code: string;
-  name: string;
-};
+import { Container } from 'semantic-ui-react';
+import SchoolList from 'containers/organisms/SchoolList';
 
 const Home: FC = () => {
-  const schools: School[] = Object.keys(charactersData).map((code) => ({
-    code,
-    name: charactersData[code].school,
-  }));
-
   return (
     <>
       <Helmet>
@@ -39,17 +28,7 @@ const Home: FC = () => {
           インターハイ後、3年生は赤木と木暮が引退し、三井のみ残留。新キャプテンにリョータが就任し、晴子を新たにマネージャーとして迎えるなど、チームは冬の選抜に向けて、新体制となる。流川は全日本ジュニアの代表に選ばれ、花道はリハビリを続けながら再びコートに立てる時を待つ。
         </p>
       </Container>
-      <h2>登場人物</h2>
-      <List as="ul">
-        {schools.map((school) => (
-          <List.Item as="li" key={school.code}>
-            <Link to={`/characters/${school.code}`}>{school.name}</Link>
-          </List.Item>
-        ))}
-        <List.Item as="li" key="all">
-          <Link to="/characters">全校の選手（身長順</Link>
-        </List.Item>
-      </List>
+      <SchoolList />
     </>
   );
 };
