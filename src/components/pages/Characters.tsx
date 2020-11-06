@@ -4,6 +4,9 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { Divider } from 'semantic-ui-react';
 import HomeButton from 'containers/molecules/HomeButton';
 
+import AllCharacters from 'containers/templates/AllCharacters';
+import SchoolCharacters from 'containers/templates/SchoolCharacters';
+
 const Characters: FC = () => {
   const { path } = useRouteMatch();
 
@@ -14,9 +17,11 @@ const Characters: FC = () => {
       </header>
       <Switch>
         <Route exact path={path}>
-          全ての選手
+          <AllCharacters />
         </Route>
-        <Route path={`${path}/:schoolCode`}>各スクーる</Route>
+        <Route path={`${path}/:schoolCode`}>
+          <SchoolCharacters />
+        </Route>
       </Switch>
       <Divider hidden />
       <HomeButton />
