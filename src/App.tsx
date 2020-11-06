@@ -2,8 +2,7 @@
 import React, { FC, useEffect } from 'react';
 import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router';
 
-import CharacterList from './CharacterList';
-import characters from './data/characters';
+import Home from 'components/pages/Home';
 import './App.css';
 
 const App: FC = () => {
@@ -20,13 +19,10 @@ const App: FC = () => {
     <div className="container">
       <Switch>
         <Route exact path="/">
-          ほげ
+          <Home />
         </Route>
         <Route path="/characters">
-          <header>
-            <h1>『SLAM DUNK』登場人物</h1>
-            <CharacterList school="湘北高校" characters={characters} />
-          </header>
+          <div>hoge</div>
         </Route>
         <Redirect to="/" />
       </Switch>
