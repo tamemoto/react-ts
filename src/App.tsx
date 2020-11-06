@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react';
 import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router';
 
 import Home from 'components/pages/Home';
+import Characters from 'components/pages/Characters';
 import './App.css';
 
 const App: FC = () => {
@@ -22,7 +23,7 @@ const App: FC = () => {
           <Home />
         </Route>
         <Route path="/characters">
-          <div>hoge</div>
+          <Characters />
         </Route>
         <Redirect to="/" />
       </Switch>
