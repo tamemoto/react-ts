@@ -1,19 +1,12 @@
 // eslint-disable-next-line no-use-before-define
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import HomeButton from 'components/molecules/HomeButton';
 
 const EnhancedHomeButton: FC = () => {
   const history = useHistory();
 
-  return (
-    <>
-      <Button basic color="grey" onClick={() => history.push('/')}>
-        <Icon name="home" />
-        ホームへ
-      </Button>
-    </>
-  );
+  return <HomeButton redirectToHome={() => history.push('/')} />;
 };
 
 export default EnhancedHomeButton;

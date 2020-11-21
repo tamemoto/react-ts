@@ -3,9 +3,7 @@ import React, { FC } from 'react';
 import { Redirect, useLocation, useParams } from 'react-router-dom';
 import { parse } from 'query-string';
 
-import { Helmet } from 'react-helmet';
-import { Header, Icon, Item } from 'semantic-ui-react';
-import Spinner from 'components/molecules/Spinner';
+import SchoolCharacters from 'components/templates/SchoolCharacters';
 
 import { charactersData } from 'data/characters';
 
@@ -17,34 +15,13 @@ const EnhancedSchoolCharacters: FC = () => {
 
   if (schoolCodeList.includes(schoolCode)) {
     const { school, players } = charactersData[schoolCode];
-    const characters = players;
 
     return (
-      <>
-        <Helmet>
-          <title>登場人物一覧 | {school}</title>
-        </Helmet>
-        <Header as="h2">{school}</Header>
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <Item.Group>
-            {characters.map((character) => (
-              <Item key={character.id}>
-                <Icon name="user circle" size="huge" />
-                <Item.Content>
-                  <Item.Header>{character.name}</Item.Header>
-                  <Item.Meta>{character.grade}年生</Item.Meta>
-                  <Item.Meta>
-                    {character.height ?? '???'}
-                    cm
-                  </Item.Meta>
-                </Item.Content>
-              </Item>
-            ))}
-          </Item.Group>
-        )}
-      </>
+      <SchoolCharacters
+        school={school}
+        characters={players}
+        isLoading={isLoading}
+      />
     );
   }
 
