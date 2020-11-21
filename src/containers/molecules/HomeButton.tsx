@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-use-before-define
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HomeButton from 'components/molecules/HomeButton';
 
 const EnhancedHomeButton: FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  return <HomeButton redirectToHome={() => history.push('/')} />;
+  return <HomeButton redirectToHome={() => navigate('/')} />;
 };
 
 export default EnhancedHomeButton;

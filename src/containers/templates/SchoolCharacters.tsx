@@ -1,14 +1,13 @@
 // eslint-disable-next-line no-use-before-define
 import React, { FC } from 'react';
-import { Redirect, useLocation, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { parse } from 'query-string';
 
 import SchoolCharacters from 'components/templates/SchoolCharacters';
-
 import { charactersData } from 'data/characters';
 
 const EnhancedSchoolCharacters: FC = () => {
-  const { schoolCode } = useParams<{ schoolCode: string }>();
+  const { schoolCode } = useParams();
   const { search } = useLocation();
   const isLoading = !!parse(search)?.loading;
   const schoolCodeList = Object.keys(charactersData);
@@ -25,7 +24,7 @@ const EnhancedSchoolCharacters: FC = () => {
     );
   }
 
-  return <Redirect to="/" />;
+  return <Navigate to="/" replace />;
 };
 
 export default EnhancedSchoolCharacters;
